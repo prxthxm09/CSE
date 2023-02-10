@@ -1,0 +1,460 @@
+1)
+SQL> create table Employee (
+  2  EmpNo int primary key,
+  3  EmpName varchar(15) not null,
+  4  Gender char not null,
+  5  Salary number(5) not null,
+  6  Address varchar(10) not null,
+  7  DNo int,
+  8  check (Gender in ('M','F')));
+
+Table created.
+
+2)
+SQL> create table Department (
+  2  DeptNo int primary key,
+  3  DeptName varchar(20) unique);
+
+Table created.
+
+3)
+SQL> alter table Employee add foreign key (DNo) references Department(DeptNo);
+
+Table altered.
+
+4)
+SQL> insert into Department values(1,'physics');
+
+1 row created.
+
+SQL> insert into Department values(2,'chemistry');
+
+1 row created.
+
+SQL> insert into Department values(3,'maths');
+
+1 row created.
+
+SQL> insert into Employee values(1,'san','M',12345,'Manipal',1);
+
+1 row created.
+
+SQL> insert into Employee values(2,'jay','M',67890,'Mangalore',2);
+
+1 row created.
+
+SQL> insert into Employee values(3,'kid','F',12905,'Udupi',3);
+
+1 row created.
+
+
+5)
+SQL> insert into Employee values(3,'kid','F','Udupi',3);
+insert into Employee values(3,'kid','F','Udupi',3)
+            *
+ERROR at line 1:
+ORA-00947: not enough values
+
+
+SQL> insert into Employee values(1,'kid','F','Udupi',3);
+insert into Employee values(1,'kid','F','Udupi',3)
+            *
+ERROR at line 1:
+ORA-00947: not enough values
+
+
+SQL> insert into Employee values(1,'kid','F',12905,'Udupi',3);
+insert into Employee values(1,'kid','F',12905,'Udupi',3)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (C05.SYS_C0012930) violated
+
+
+SQL> insert into Department values(3,'biology');
+insert into Department values(3,'biology')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (C05.SYS_C0012938) violated
+
+6)
+SQL> insert into Employee values(4,'law','M',34786,'Udupi',3);
+
+1 row created.
+
+SQL> delete from Department where DeptNo=3;
+delete from Department where DeptNo=3
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (C05.SYS_C0013026) violated - child record
+found
+
+7)
+
+SQL> alter table Employee add DNo int;
+
+Table altered.
+
+SQL> drop table Department;
+
+Table dropped.
+
+SQL> create table department (
+  2  DeptNo int primary key,
+  3  DeptName varchar(20) unique);
+
+Table created.
+
+SQL> alter table Employee add foreign key (DNo) references Department(DeptNo) on delete cascade;
+
+Table altered.
+
+8)
+SQL> alter table Employee modify Salary default 10000;
+
+Table altered. 
+
+
+
+
+9)
+SQL> select name,dept_name from student;
+
+NAME                 DEPT_NAME
+-------------------- --------------------
+Zhang                Comp. Sci.
+Shankar              Comp. Sci.
+Brandt               History
+Chavez               Finance
+Peltier              Physics
+Levy                 Physics
+Williams             Comp. Sci.
+Sanchez              Music
+Snow                 Physics
+Brown                Comp. Sci.
+Aoi                  Elec. Eng.
+
+NAME                 DEPT_NAME
+-------------------- --------------------
+Bourikas             Elec. Eng.
+Tanaka               Biology
+
+13 rows selected.
+
+
+10)
+
+SQL> select * from instructor;
+
+ID    NAME                 DEPT_NAME                SALARY
+----- -------------------- -------------------- ----------
+10101 Srinivasan           Comp. Sci.                65000
+12121 Wu                   Finance                   90000
+15151 Mozart               Music                     40000
+22222 Einstein             Physics                   95000
+32343 El Said              History                   60000
+33456 Gold                 Physics                   87000
+45565 Katz                 Comp. Sci.                75000
+58583 Califieri            History                   62000
+76543 Singh                Finance                   80000
+76766 Crick                Biology                   72000
+83821 Brandt               Comp. Sci.                92000
+
+ID    NAME                 DEPT_NAME                SALARY
+----- -------------------- -------------------- ----------
+98345 Kim                  Elec. Eng.                80000
+
+12 rows selected.
+
+SQL> select name from instructor where dept_name like 'Comp%';
+
+NAME
+--------------------
+Srinivasan
+Katz
+Brandt
+
+
+11)
+
+SQL> select * from course;
+
+COURSE_I TITLE                                              DEPT_NAME
+-------- -------------------------------------------------- --------------------
+   CREDITS
+----------
+BIO-101  Intro. to Biology                                  Biology
+         4
+
+BIO-301  Genetics                                           Biology
+         4
+
+BIO-399  Computational Biology                              Biology
+         3
+
+
+COURSE_I TITLE                                              DEPT_NAME
+-------- -------------------------------------------------- --------------------
+   CREDITS
+----------
+CS-101   Intro. to Computer Science                         Comp. Sci.
+         4
+
+CS-190   Game Design                                        Comp. Sci.
+         4
+
+CS-315   Robotics                                           Comp. Sci.
+         3
+
+
+COURSE_I TITLE                                              DEPT_NAME
+-------- -------------------------------------------------- --------------------
+   CREDITS
+----------
+CS-319   Image Processing                                   Comp. Sci.
+         3
+
+CS-347   Database System Concepts                           Comp. Sci.
+         3
+
+EE-181   Intro. to Digital Systems                          Elec. Eng.
+         3
+
+
+COURSE_I TITLE                                              DEPT_NAME
+-------- -------------------------------------------------- --------------------
+   CREDITS
+----------
+FIN-201  Investment Banking                                 Finance
+         3
+
+HIS-351  World History                                      History
+         3
+
+MU-199   Music Video Production                             Music
+         3
+
+
+COURSE_I TITLE                                              DEPT_NAME
+-------- -------------------------------------------------- --------------------
+   CREDITS
+----------
+PHY-101  Physical Principles                                Physics
+         4
+
+
+13 rows selected
+
+12)
+
+SQL> select title from course where dept_name like 'Comp%' and credits=3;
+
+TITLE
+--------------------------------------------------
+Robotics
+Image Processing
+Database System Concepts
+
+
+
+
+13)
+SQL> select name from instructor where salary>40000 and salary<90000;
+
+NAME
+--------------------
+Srinivasan
+El Said
+Gold
+Katz
+Califieri
+Singh
+Crick
+Kim
+
+8 rows selected.
+
+15)
+ select name,year,room_number from student,course,takes,classroom where room_number=101;
+
+NAME                       YEAR ROOM_NU
+-------------------- ---------- -------
+Zhang                      2009 101
+Shankar                    2009 101
+Brandt                     2009 101
+Chavez                     2009 101
+Peltier                    2009 101
+Levy                       2009 101
+Williams                   2009 101
+Sanchez                    2009 101
+Snow                       2009 101
+Brown                      2009 101
+Aoi                        2009 101
+
+
+18)
+SQL> select name from instructor where dept_name like '%ch%';
+
+no rows selected
+
+SQL> select * from instructor
+  2  ;
+
+ID    NAME                 DEPT_NAME                SALARY
+----- -------------------- -------------------- ----------
+10101 Srinivasan           Comp. Sci.                65000
+12121 Wu                   Finance                   90000
+15151 Mozart               Music                     40000
+22222 Einstein             Physics                   95000
+32343 El Said              History                   60000
+33456 Gold                 Physics                   87000
+45565 Katz                 Comp. Sci.                75000
+58583 Califieri            History                   62000
+76543 Singh                Finance                   80000
+76766 Crick                Biology                   72000
+83821 Brandt               Comp. Sci.                92000
+
+ID    NAME                 DEPT_NAME                SALARY
+----- -------------------- -------------------- ----------
+98345 Kim                  Elec. Eng.                80000
+
+12 rows selected.
+
+
+
+19)
+SQL> select name,LENGTH(name) as length from student;
+
+NAME                     LENGTH
+-------------------- ----------
+Zhang                         5
+Shankar                       7
+Brandt                        6
+Chavez                        6
+Peltier                       7
+Levy                          4
+Williams                      8
+Sanchez                       7
+Snow                          4
+Brown                         5
+Aoi                           3
+
+NAME                     LENGTH
+-------------------- ----------
+Bourikas                      8
+Tanaka                        6
+
+13 rows selected.
+
+
+20)
+SQL> select dept_name,SUBSTR(dept_name,3) from department;
+
+DEPT_NAME
+--------------------
+SUBSTR(DEPT_NAME,3)
+------------------------------------------------------------------------
+Biology
+ology
+
+Comp. Sci.
+mp. Sci.
+
+Elec. Eng.
+ec. Eng.
+
+
+DEPT_NAME
+--------------------
+SUBSTR(DEPT_NAME,3)
+------------------------------------------------------------------------
+Finance
+nance
+
+History
+story
+
+Music
+sic
+
+
+DEPT_NAME
+--------------------
+SUBSTR(DEPT_NAME,3)
+------------------------------------------------------------------------
+Physics
+ysics
+
+
+7 rows selected.
+
+
+21)
+SQL> select UPPER(name) from instructor;
+
+UPPER(NAME)
+--------------------
+SRINIVASAN
+WU
+MOZART
+EINSTEIN
+EL SAID
+GOLD
+KATZ
+CALIFIERI
+SINGH
+CRICK
+BRANDT
+
+UPPER(NAME)
+--------------------
+KIM
+
+12 rows selected.
+
+
+
+22)
+SQL> select NVL(name,0) from student;
+
+NVL(NAME,0)
+--------------------
+Zhang
+Shankar
+Brandt
+Chavez
+Peltier
+Levy
+Williams
+Sanchez
+Snow
+Brown
+Aoi
+
+NVL(NAME,0)
+--------------------
+Bourikas
+Tanaka
+
+SQL> select salary,ROUND(salary/3,2) from instructor;
+
+    SALARY ROUND(SALARY/3,2)
+---------- -----------------
+     65000          21666.67
+     90000             30000
+     40000          13333.33
+     95000          31666.67
+     60000             20000
+     87000             29000
+     75000             25000
+     62000          20666.67
+     80000          26666.67
+     72000             24000
+     92000          30666.67
+
+    SALARY ROUND(SALARY/3,2)
+---------- -----------------
+     80000          26666.67
+
+12 rows selected.
+
+24)
