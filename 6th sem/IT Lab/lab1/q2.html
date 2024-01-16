@@ -1,0 +1,36 @@
+<html>
+ <head>
+ <title>Calculator</title>
+ <script type = "text/javascript" src = "jquery-3.4.1.js">
+ </script>
+ <script type = "text/javascript" language = "javascript">
+ $(document).ready(function() {
+ $("button").click( function(){
+var num1= parseInt($('input[name=num1]').val());
+var num2= parseInt($('input[name=num2]').val());
+$("#plus").click(function(){
+var res=num1+num2;
+$('#res').html("RESULT: "+num1+" + "+ num2+" = "+res);
+});
+$('#minus').click(function(){
+var res=num1-num2;
+$('#res').html("RESULT: "+num1+" - "+ num2+" = "+res);
+});
+ });
+ });
+ </script>
+ </head>
+ <body>
+ <div id = "mydiv">
+   
+        <label for="num1">First num:</label>
+        <input type="number"  name="num1">
+        <label for="num2">Second num:</label>
+        <input type="number"  name="num2">
+      
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+ </div>
+ <div id="res"></div>
+ </body>
+</html>

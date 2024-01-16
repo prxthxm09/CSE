@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Animate</title>
+        <script type="text/javascript" src="jquery-3.4.1.js"></script>
+        <script type="text/javascript" langauage="javascript">
+        $(document).ready(function(){
+            $(".red").css("background-color","red");
+            $(".yellow").css("background-color","yellow");
+            $("button").click(function(){
+                $("#mydiv").animate({marginRight: "+=200px"  });
+            });
+        })
+        </script>
+    </head>
+    <body>
+        <button>
+            Start animation </button>
+            <div id="mydiv" style="float: right; width: 50%; position: relative">
+                <table>
+                    <tr class="red">
+                        <tr class="red">
+                <th>One</th>
+                <th>Two</th>
+                <th>Three</th>
+            </tr>
+            <tr class="yellow">
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr class="red">
+                <td>1.1</td>
+                <td>2.2</td>
+                <td>3.3</td>
+            </tr>
+                    
+                    </table>
+                    <img src="plant.jpg" alt="tree image" height="150px" width="200px" />
+                </div></body>
+</html>

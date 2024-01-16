@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Birthday Card</title>
+<script type="text/javascript" src="jquery-3.4.1.js"></script>
+<script type="text/javascript" langauage="javascript">
+    $(document).ready(function () {
+        $('#btn').click(function () {
+            var bg = $('#colors option:selected').text();
+            $('#div2').css("background-color",bg);
+            
+            var ft = $('#fonts option:selected').text();
+            $('#div2').css("font-family",ft);
+ 
+             
+            var fs = parseFloat($('#fsize').val());
+            $('#p2').css("font-size",fs);
+            
+            var bd = $('input[type="radio"]:checked').val();
+            $('#div2').css("border",bd);
+            
+            var txt = $('#txtarea').val();
+            $('#p2').html(txt);
+            
+            var x = $('input[type="checkbox"]:checked').length>0;
+            if(x){
+              $('#p3').replaceWith("<img id=\"myimg\" src='plant.jpg' style='justify-content: center;' height='200px' width='200px'>");
+            } 
+            else{
+              $('#p3').replaceWith('<p id="p3"></p>');
+              $('#myimg').replaceWith('<p id="p3"></p>');
+            }
+            
+        });
+ 
+    });
+</script>
+</head>
+<body>
+  <div style="width: 100%; overflow: hidden;background-color: gray;">
+    
+    <div style="width: 600px; float: left;">
+      <label for="colors">Choose a background color:</label><br>
+      <select name="colors" id="colors">
+     <option value="orange">orange</option>
+     <option value="white">white</option>
+     <option value="pink">pink</option>
+     <option value="aqua">aqua</option>
+     </select>
+     <br><br>
+     <label for="fonts">Choose a font:</label><br>
+      <select name="fonts" id="fonts">
+      <option value="serif">serif</option>
+      <option value="sans-serif">sans-serif</option>
+      <option value="monospace">monospace</option>
+      <option value="cursive">cursive</option>
+      <option value="fantasy">fantasy</option>
+     </select>
+   <br><br>
+   <p>Enter a font size :</p>
+   <input type="text" id="fsize" placeholder="font size"/>
+   <br><br>
+   <label for="borders">Select a border:</label><br>
+    <input type="radio" name="borders" value="none" />None<br>
+    <input type="radio" name="borders" value="double" />Double<br>
+    <input type="radio" name="borders" value="solid" />Solid<br>
+    <br>
+    <input type="checkbox" name="check" id="check">Add default image<br><br>
+    <p>Enter text here: </p>
+    <textarea id="txtarea" name="txtarea" rows="4" cols="50"></textarea>
+    <br><br>
+    <button type="submit" id="btn">Update</button>
+    </div>
+ 
+    <div id="div2" style="margin-left: 620px;text-align: center;height: 600px;width: 500px;">
+      <br><br>
+      <p id="p2"></p>
+      <br><br>
+      <p id="p3"></p>
+    </div>
+</div>
+</body>
+</html>
+
