@@ -1,24 +1,19 @@
-# 2. Write a Python class to find a pair of elements (indices of the two numbers) 
-# from 
-# a given array whose sum equals a specific target number. 
-# Input: numbers= [10,20,10,40,50,60,70], target=50 
-# Output: 3, 4 
-
-class Twosum:
-	def find(self, arr, targ):
-		d = {}
-		for i in range(len(arr)):
-			c = targ-arr[i]
-			if c in d:
-				print(d[c], i)
-				break
-			d[arr[i]] = i
-		else:
-			print("Not Possible")
-
-ts = Twosum()
-print("Enter array: ")
-arr = list(map(int, input().split()))
-targ = int(input("Enter target: "))
-ts.find(arr, targ)
-	
+class q2:
+    def __init__(self,arr):
+        self.arr = arr
+    def searchPair(self,sum):
+        n = len(self.arr)
+        for i in range(n):
+            res = []
+            res.append(i)
+            for j in range(i+1,n):
+                res.append(j)
+                if self.arr[i] + self.arr[j] == sum:
+                    return res
+                res.remove(j)
+        return []
+    
+if __name__ == '__main__':
+    qq2 = q2([1,2,5,7,8,9,3])
+    lst = qq2.searchPair(6)
+    print(lst)
