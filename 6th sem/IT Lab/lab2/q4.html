@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="container mt-5 text-white" style="background-color: black;">
+    <h2 class="text-center mb-4">Class Timetable</h2>
+    <div id="timetableCarousel" class="carousel slide">
+        <ol class="carousel-indicators">
+            <li data-target="#timetableCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#timetableCarousel" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <table class="table table-bordered text-white">
+                    <thead>
+                        <tr>
+                            <th colspan="3" class="text-center">Monday</th>
+                        </tr>
+                        <tr>
+                            <th>Time</th>
+                            <th>Section A</th>
+                            <th>Section B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>9:00 AM - 10:00 AM</th>
+                            <td>EEFM</td>
+                            <td>DS</td>
+                        </tr>
+                        <tr>
+                            <th>10:00 AM - 11:00 AM</th>
+                            <td>PCAP</td>
+                            <td>PCAP</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="carousel-item">
+                <table class="table table-bordered text-white">
+                    <thead>
+                        <tr>
+                            <th colspan="3" class="text-center">Tuesday</th>
+                        </tr>
+                        <tr>
+                            <th>Time</th>
+                            <th>Section A</th>
+                            <th>Section B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>9:00 AM - 10:00 AM</th>
+                            <td>PCAP</td>
+                            <td>DS</td>
+                        </tr>
+                        <tr>
+                            <th>10:00 AM - 11:00 AM</th>
+                            <td>DS</td>
+                            <td>EEFM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#timetableCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#timetableCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</body>
+</html>

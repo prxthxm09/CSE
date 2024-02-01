@@ -1,0 +1,65 @@
+<!-- Divide the page in to 2 parts top and bottom, then 
+    divide the bottom into 3 parts and design 
+    each top and bottom part using different 
+    input groups, input, badges, buttons and button groups -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Grid System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid bg-info py-5 text-white ">
+        <h3 class="text-center font-weight-bold">GRID SYSTEM</h3>
+        <div class="row">
+            <div class="input-group m-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Username">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col bg-secondary text-light m-1">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary">Left</button>
+                    <button type="button" class="btn btn-success">Middle</button>
+                    <button type="button" class="btn btn-danger">Right</button>
+                </div>
+            </div>
+            <div class="col bg-light mt-1 mb-1" allign="center">
+                <button type="button" class="btn btn-danger m-2">
+                    Unread <span class="badge badge-light">4</span>
+                </button> <br>
+                <button type="button" class="btn btn-success m-2">
+                    Read <span class="badge badge-light">20</span>
+                </button> <br>
+                <button type="button" class="btn btn-secondary m-2">
+                    Archived <span class="badge badge-light">2</span>
+                </button> <br>
+            </div>
+            <div class="col bg-dark text-light m-1">
+                <form>
+                    <div class="form-group">
+                        <label for="formselect" class="h4">Example select</label>
+                        <select class="form-control" id="formselect">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
