@@ -1,0 +1,11 @@
+// ssh c63@172.16.57.152
+//pass : c63
+//nvcc ex.cu -o ex
+//./ex
+// to copy scp ex.cu c63@172.16.57.152:/home/c63
+
+
+scp l8sol.cu c60@172.16.57.152:/home/c60
+ssh c60@172.16.57.152
+nvcc sol.cu -o sol
+
